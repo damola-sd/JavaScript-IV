@@ -35,12 +35,13 @@ class Student extends Person {
         super(attributes);
         this.previousBackground = attributes.previousBackground;
         this.className - attributes.className;
-        this.favSubjects = [attributes.favSubjects];
+        this.favSubjects = attributes.favSubjects;
     }
     listsSubjects() {
-        this.favSubjects.forEach = a => {
-            console.log(`${a}`);
-        }
+        let subjects = this.favSubjects;
+        subjects.forEach(function(element) {
+            console.log(element);
+          });
     }
     PRAssignment(subject) {
         console.log(`${this.name} has submitted a PR for ${subject}`);
@@ -68,3 +69,139 @@ class ProjectManagers extends Instructor{
     }
 
 }
+
+//Persons
+const legolas = new Person ({
+    name: 'Legolas',
+    age: 108,
+    location: `Mirkwood`,
+    gender: `M`
+});
+
+const gimli = new Person ({
+    name: 'Gimli',
+    age: 42,
+    location: `Glittering Caves`,
+    gender: `M`
+});
+
+const eowen = new Person ({
+    name: 'Eowen',
+    age: 120,
+    location: `Rohan`,
+    gender: `F`
+});
+
+// Instructors
+const gendry = new Instructor ({
+    name: 'Gendry',
+    age: 32,
+    location: `Ireland`,
+    gender: `M`,
+    specialty: 'Machine Learning',
+    favLanguage: `Python`,
+    catchPhrase: `Scikit-learn is great`
+});
+
+const arya = new Instructor ({
+    name: 'Arya',
+    age: 18,
+    location: `North`,
+    gender: `F`,
+    specialty: 'Asassin',
+    favLanguage: `Valyrian`,
+    catchPhrase: `Youre on my list`
+});
+
+
+const brienne = new Instructor ({
+    name: 'Brienne',
+    age: 35,
+    location: `Wherever Sansa is`,
+    gender: `F`,
+    specialty: 'SwordFighting',
+    favLanguage: `Midlands Engish`,
+    catchPhrase: `Yes, My Lady`
+});
+
+//PMs
+const borja = new ProjectManagers({
+    name: 'Borja',
+    age: 21,
+    location: `Barcelona`,
+    gender: `M`,
+    specialty: 'React',
+    favLanguage: `JavaScript`,
+    catchPhrase: `Dont Worry`,
+    gradClassName: `WEBEU2`,
+    favInstructor: `Gabe`
+});
+
+const giacomo = new ProjectManagers({
+    name: 'Giacomo',
+    age: 26,
+    location: `Milan, Italy`,
+    gender: `M`,
+    specialty: 'Ruby on Rails',
+    favLanguage: `Ruby`,
+    catchPhrase: `Lets fix it`,
+    gradClassName: `WEBEU2`,
+    favInstructor: `Anthony`
+});
+
+//Students
+const jack = new Student({
+    name: 'Jack',
+    age: 21,
+    location: `Atlantic Ocean`,
+    gender: `M`,
+    previousBackground: `Labourer in England`,
+    className: `WEBEU2`,
+    favSubjects: [`JavaScript`, `Python`, `C`, `Java` ]
+});
+
+
+const jill = new Student({
+    name: 'Jill',
+    age: 84,
+    location: `Cambridge, England`,
+    gender: `F`,
+    previousBackground: `Stylist`,
+    className: `Design`,
+    favSubjects: [`Gardening`, `Design Drawing`, `Stitchng`, `Knitting`]
+});
+
+
+const blake = new Student({
+    name: 'Blake',
+    age: 24,
+    location: `Antwerp`,
+    gender: `M`,
+    previousBackground: `Content Developer`,
+    className: `WEBEU2`,
+    favSubjects: [`Ruby on Rails`, `CSS`, `HTML`, `C++`]
+});
+//Person tests
+console.log(eowen.speak());
+
+//PM tests
+console.log(borja.catchPhrase);
+console.log(borja.age);
+console.log(borja.location);
+console.log(borja.debugsCode(jack, `JavaScript`));
+console.log(giacomo.standUp(`WEBEU2_HELP`));
+console.log(giacomo.grade(jill, 'Styling'));
+
+//Student tests
+console.log(jack.name);
+console.log(jack.age);
+console.log(jack.gender);
+console.log(jack.PRAssignment(`JavaScript`));
+console.log(blake.sprintChallenge(`CSS`));
+console.log(blake.speak());
+console.log(blake.listsSubjects());
+
+//Instructor tests
+console.log(gendry.demo(`Dothraki swordfighting`));
+console.log(arya.grade(blake, `HTML`));
+console.log(brienne.location);
