@@ -27,10 +27,10 @@ class Instructor extends Person {
         console.log(`${student.name} receives a perfect score on ${subject}`);
     }
     addOrSubtract(student) {
-        if(Math.random(10) % 2 == 0){
-            student.grade +=  Math.floor((Math.random() * 20) + 1);;
+        if(Math.floor((Math.random() * 10) + 1) % 2 === 0){
+            student.score += student.score + Math.floor((Math.random() * 50) + 1);;
         }else {
-            student.grade -=  Math.floor((Math.random() * 20) + 1);;
+            student.score =  student.score - Math.floor((Math.random() * 50) + 1);;
         }
     }
 
@@ -63,9 +63,14 @@ class Student extends Person {
             console.log(`Congratulations ${this.name}, You graduate from Lambda school`);
         }else {
             console.log(`Keep working hard ${this.name}`);
-            instructor.addOrSubtract(this);
+            instructor.addOrSubtract(this.score);
             //Recursive loop. Could be problematic
-            this.graduate(instructor);
+            let i = 0;
+            while(i<10){
+                this.graduate(instructor);
+                i++;
+            }
+            
         }
     }
 }
@@ -218,7 +223,7 @@ console.log(jack.gender);
 
 //Stretch problem test
 console.log(jack.score);
-// console.log(jack.graduate(arya)); Very problematic
+console.log(jack.graduate(arya)); // Very problematic
 
 
 console.log(jack.PRAssignment(`JavaScript`));
