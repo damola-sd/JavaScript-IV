@@ -26,6 +26,14 @@ class Instructor extends Person {
     grade(student, subject) {
         console.log(`${student.name} receives a perfect score on ${subject}`);
     }
+    addOrSubtract(student) {
+        if(Math.random(10) % 2 == 0){
+            student.grade +=  Math.floor((Math.random() * 20) + 1);;
+        }else {
+            student.grade -=  Math.floor((Math.random() * 20) + 1);;
+        }
+    }
+
 }
 
 //Student Class
@@ -36,6 +44,7 @@ class Student extends Person {
         this.previousBackground = attributes.previousBackground;
         this.className - attributes.className;
         this.favSubjects = attributes.favSubjects;
+        this.score = Math.floor((Math.random() * 100) + 1);
     }
     listsSubjects() {
         let subjects = this.favSubjects;
@@ -48,6 +57,16 @@ class Student extends Person {
     }
     sprintChallenge(subject) {
         console.log(`${this.name} has begun sprint challenge on ${subject}`);
+    }
+    graduate(instructor){
+        if(this.score >= 70){
+            console.log(`Congratulations ${this.name}, You graduate from Lambda school`);
+        }else {
+            console.log(`Keep working hard ${this.name}`);
+            instructor.addOrSubtract(this);
+            //Recursive loop. Could be problematic
+            this.graduate(instructor);
+        }
     }
 }
 
@@ -196,6 +215,12 @@ console.log(giacomo.grade(jill, 'Styling'));
 console.log(jack.name);
 console.log(jack.age);
 console.log(jack.gender);
+
+//Stretch problem test
+console.log(jack.score);
+// console.log(jack.graduate(arya)); Very problematic
+
+
 console.log(jack.PRAssignment(`JavaScript`));
 console.log(blake.sprintChallenge(`CSS`));
 console.log(blake.speak());
